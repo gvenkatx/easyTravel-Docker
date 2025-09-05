@@ -17,8 +17,18 @@ spec:
           value: etAdmin
         - name: ET_DATABASE_PASSWORD
           value: adminadmin
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        capabilities:
+          drop:
+            - ALL
+        seccompProfile:
+          type: RuntimeDefault
       resources:
         requests:
           memory: "200Mi"
+          cpu: "100m"
         limits:
           memory: "200Mi"
+          cpu: "200m"
